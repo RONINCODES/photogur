@@ -1,2 +1,5 @@
 <h1>Pictures</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<% @pictures.each do |picture| %>
+  <p><%= picture.title %>, <%= picture.artist %></p>
+  <img src="<%= picture.url %>" alt="<%= picture.title %>">
+<% end %>
