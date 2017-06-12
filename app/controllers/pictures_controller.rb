@@ -1,6 +1,8 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
+    @month_old_pictures = Picture.created_before(1.month.ago)
+    @year_old_pictures = Picture.pictures_created_in_year(1.year.ago.year)
   end
 
   def show
@@ -17,6 +19,7 @@ class PicturesController < ApplicationController
     @picture.title = params[:picture][:title]
     @picture.artist = params[:picture][:artist]
     @picture.url = params[:picture][:url]
+
 
 
     if @picture.save
@@ -38,6 +41,7 @@ class PicturesController < ApplicationController
     @picture.title = params[:picture][:title]
     @picture.artist = params[:picture][:artist]
     @picture.url = params[:picture][:url]
+
 
 
     if @picture.save
